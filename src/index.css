@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.mr {
+  margin: 0 1rem;
+}
+
+.mr-t {
+  margin-top: 2rem;
+}
+
+.yellow-icon {
+  color: #cec100;
+  transition: color .10s ease-in-out;
+}
+
+.yellow-icon:active {
+  color: #eadb00;
+}
+
+.trash-danger {
+  transition: color .10s ease-in-out;
+}
+
+.trash-danger:active {
+  color: #ab0000;
+}
+
+.material-icons {
+  cursor: pointer;
+}
+
+.completed {
+  text-decoration: line-through #777777;
+}

@@ -1,26 +1,77 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route} from "react-router-dom";
 
-function App() {
+import {NavBar} from "./Components/NavBar";
+import {ToDoPage} from "./pages/ToDo-page";
+import {ITodo} from "./interfaces";
+import {ToDoList} from "./Components/ToDoList";
+import {About} from "./Components/About";
+
+const App: React.FC = () => {
+  const initialState = JSON.parse(localStorage.getItem('todos')!);
+  const [todos, setTodos] = React.useState<ITodo[]>(initialState);
+
+  React.useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+
+  const addTodo = (text: string) => {
+    const newTodo = {
+      id: Date.now(),
+      text,
+      completed: false
+    };
+
+    setTodos((prev) => [newTodo, ...prev]);
+  };
+
+  const deleteTodo = (id: number) => {
+    setTodos((prev) => prev.filter((i: ITodo) => i.id !== id));
+  };
+
+  const completedTodo = (id: number) => {
+    setTodos(prev =>
+      prev.map(i => {
+        if (i.id === id) {
+          const newTask: ITodo = {
+            ...i,
+            completed: !i.completed
+          };
+          return newTask;
+        }
+        return i;
+      }));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+    <>
+      <NavBar/>
+      <div className="container mr-t">
+        <Route
+          path="/"
+          exact
+          render={() =>
+            <ToDoPage
+              addTodo={addTodo}
+              todos={todos}
+              deleteTodo={deleteTodo}
+              completedTodo={completedTodo}
+            />
+          }
+        />
+        <Route path="/about" component={About}/>
+        <Route
+          path="/list"
+          render={() =>
+            <ToDoList
+              todos={todos}
+              deleteTodo={deleteTodo}
+              completedTodo={completedTodo}
+            />
+          }
+        />
+      </div>
+    </>
+  )
+};
 export default App;
