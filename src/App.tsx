@@ -5,7 +5,7 @@ import {NavBar} from "./Components/NavBar";
 import {ToDoPage} from "./pages/ToDo-page";
 import {ITodo} from "./interfaces";
 import {ToDoList} from "./Components/ToDoList";
-import {About} from "./Components/About";
+import {AboutPage} from "./pages/About-page";
 
 const App: React.FC = () => {
   const initialState = JSON.parse(localStorage.getItem('todos')!);
@@ -59,7 +59,7 @@ const App: React.FC = () => {
             />
           }
         />
-        <Route path="/about" component={About}/>
+        <Route path="/about" component={AboutPage}/>
         <Route
           path="/list"
           render={() =>
