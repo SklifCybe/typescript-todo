@@ -4,7 +4,7 @@ interface PropsTodoForm {
   addTodo: (text: string) => void
 }
 
-export const ToDoForm: React.FC<PropsTodoForm> = ({addTodo}) => {
+export const ToDoForm: React.FC<PropsTodoForm> = ({ addTodo }) => {
   const [title, setTitle] = React.useState<string>('');
 
   const titleHandle = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {ToDoForm} from "../Components/ToDoForm";
-import {ToDoList} from "../Components/ToDoList";
-import {ITodo} from "../interfaces";
+import { ToDoForm } from "../Components/ToDoForm";
+import { ToDoList } from "../Components/ToDoList";
+import { ITodo } from "../interfaces";
 
 interface PropsTodoPage {
   addTodo: (text: string) => void
@@ -11,7 +11,7 @@ interface PropsTodoPage {
   completedTodo: (id: number) => void
 }
 
-export const ToDoPage: React.FC<PropsTodoPage> = ({addTodo, todos, deleteTodo, completedTodo}) => {
+export const ToDoPage: React.FC<PropsTodoPage> = ({ addTodo, todos, deleteTodo, completedTodo }) => {
   return (
     <>
       <ToDoForm addTodo={addTodo}/>

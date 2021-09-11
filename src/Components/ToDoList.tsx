@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ITodo} from "../interfaces";
+import { ITodo } from "../interfaces";
 
 interface PropsToDoList {
   todos: ITodo[]
@@ -8,9 +8,9 @@ interface PropsToDoList {
   completedTodo: (id: number) => void
 }
 
-export const ToDoList: React.FC<PropsToDoList> = ({todos, deleteTodo, completedTodo}) => {
+export const ToDoList: React.FC<PropsToDoList> = ({ todos, deleteTodo, completedTodo }) => {
   const deleteHandle = (id: number) => {
-    if (window.confirm('Вы уверены что хотите удолить задачу?')) {
+    if (window.confirm('Вы уверены что хотите удалить задачу?')) {
       deleteTodo(id);
     }
   };
@@ -23,7 +23,7 @@ export const ToDoList: React.FC<PropsToDoList> = ({todos, deleteTodo, completedT
   return (
     <ul>
       {todos.map((todo: ITodo) => (
-        <li key={todo.id} style={{marginBottom: "1rem"}}>
+        <li key={todo.id} style={{ marginBottom: "1rem" }}>
           <label>
             <input type="checkbox" checked={todo.completed} onChange={() => completedHandler(todo.id)}/>
             {

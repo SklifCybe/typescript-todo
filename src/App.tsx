@@ -1,11 +1,11 @@
 import React from 'react';
-import {Route} from "react-router-dom";
+import { Route } from "react-router-dom";
 
-import {NavBar} from "./Components/NavBar";
-import {ToDoPage} from "./pages/ToDo-page";
-import {ITodo} from "./interfaces";
-import {ToDoList} from "./Components/ToDoList";
-import {AboutPage} from "./pages/About-page";
+import { NavBar } from "./Components/NavBar";
+import { ToDoPage } from "./pages/ToDo-page";
+import { ITodo } from "./interfaces";
+import { ToDoList } from "./Components/ToDoList";
+import { AboutPage } from "./pages/About-page";
 
 const App: React.FC = () => {
   const initialState = JSON.parse(localStorage.getItem('todos')!);
